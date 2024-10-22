@@ -1,0 +1,60 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Pregunta 01
+      id: pregunta-01
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 01
+        setup-command: ''
+        command: python3 tests.py 01
+        timeout: 1
+        max-score: 1
+    - name: Pregunta 04
+      id: pregunta-04
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 04
+        setup-command: ''
+        command: python3 tests.py 04
+        timeout: 1
+        max-score: 1
+    - name: Pregunta 03
+      id: pregunta-03
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 03
+        setup-command: ''
+        command: python3 tests.py 03
+        timeout: 1
+        max-score: 1
+    - name: python3 tests.py 04
+      id: python3-tests-py-04
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: python3 tests.py 04
+        setup-command: ''
+        command: python3 tests.py 04
+        timeout: 1
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        PREGUNTA-01_RESULTS: "${{steps.pregunta-01.outputs.result}}"
+        PREGUNTA-04_RESULTS: "${{steps.pregunta-04.outputs.result}}"
+        PREGUNTA-03_RESULTS: "${{steps.pregunta-03.outputs.result}}"
+        PYTHON3-TESTS-PY-04_RESULTS: "${{steps.python3-tests-py-04.outputs.result}}"
+      with:
+        runners: pregunta-01,pregunta-04,pregunta-03,python3-tests-py-04
