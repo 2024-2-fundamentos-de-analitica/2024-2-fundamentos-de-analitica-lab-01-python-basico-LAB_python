@@ -112,6 +112,15 @@ jobs:
         command: python3 tests.py 11
         timeout: 1
         max-score: 1
+    - name: Pregunta 12
+      id: pregunta-12
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 12
+        setup-command: ''
+        command: python3 tests.py 12
+        timeout: 1
+        max-score: 1
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
@@ -126,5 +135,6 @@ jobs:
         PREGUNTA-09_RESULTS: "${{steps.pregunta-09.outputs.result}}"
         PREGUNTA-10_RESULTS: "${{steps.pregunta-10.outputs.result}}"
         PREGUNTA-11_RESULTS: "${{steps.pregunta-11.outputs.result}}"
+        PREGUNTA-12_RESULTS: "${{steps.pregunta-12.outputs.result}}"
       with:
-        runners: pregunta-01,pregunta-02,pregunta-03,pregunta-04,pregunta-05,pregunta-06,pregunta-07,pregunta-08,pregunta-09,pregunta-10,pregunta-11
+        runners: pregunta-01,pregunta-02,pregunta-03,pregunta-04,pregunta-05,pregunta-06,pregunta-07,pregunta-08,pregunta-09,pregunta-10,pregunta-11,pregunta-12
