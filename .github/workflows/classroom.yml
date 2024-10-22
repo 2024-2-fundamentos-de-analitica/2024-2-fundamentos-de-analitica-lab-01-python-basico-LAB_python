@@ -31,10 +31,30 @@ jobs:
         command: python3 tests.py 02
         timeout: 11
         max-score: 1
+    - name: Pregunta 03
+      id: pregunta-03
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 03
+        setup-command: ''
+        command: python3 tests.py 03
+        timeout: 11
+        max-score: 1        
+    - name: Pregunta 04
+      id: pregunta-04
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 04
+        setup-command: ''
+        command: python3 tests.py 04
+        timeout: 11
+        max-score: 1    
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         PREGUNTA-01_RESULTS: "${{steps.pregunta-01.outputs.result}}"
         PREGUNTA-02_RESULTS: "${{steps.pregunta-02.outputs.result}}"
+        PREGUNTA-03_RESULTS: "${{steps.pregunta-03.outputs.result}}"
+        PREGUNTA-04_RESULTS: "${{steps.pregunta-04.outputs.result}}"
       with:
-        runners: pregunta-01,pregunta-02
+        runners: pregunta-01,pregunta-02,pregunta-03,pregunta-04
