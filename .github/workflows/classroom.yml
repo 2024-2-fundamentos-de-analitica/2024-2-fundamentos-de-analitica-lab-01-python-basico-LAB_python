@@ -40,11 +40,71 @@ jobs:
         command: python3 tests.py 03
         timeout: 1
         max-score: 1
+    - name: Pregunta 04
+      id: pregunta-04
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 04
+        setup-command: ''
+        command: python3 tests.py 04
+        timeout: 1
+        max-score: 1
+    - name: Pregunta 05
+      id: pregunta-05
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 05
+        setup-command: ''
+        command: python3 tests.py 05
+        timeout: 1
+        max-score: 1
+    - name: Pregunta 06
+      id: pregunta-06
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 06
+        setup-command: ''
+        command: python3 tests.py 06
+        timeout: 1
+        max-score: 1
+    - name: Pregunta 07
+      id: pregunta-07
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 07
+        setup-command: ''
+        command: python3 tests.py 07
+        timeout: 1
+        max-score: 1
+    - name: Pregunta 08
+      id: pregunta-08
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 08
+        setup-command: ''
+        command: python3 tests.py 08
+        timeout: 1
+        max-score: 1
+    - name: Pregunta 09
+      id: pregunta-09
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pregunta 09
+        setup-command: ''
+        command: python3 tests.py 09
+        timeout: 1
+        max-score: 1
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         PREGUNTA-01_RESULTS: "${{steps.pregunta-01.outputs.result}}"
         PREGUNTA-02_RESULTS: "${{steps.pregunta-02.outputs.result}}"
         PREGUNTA-03_RESULTS: "${{steps.pregunta-03.outputs.result}}"
+        PREGUNTA-04_RESULTS: "${{steps.pregunta-04.outputs.result}}"
+        PREGUNTA-05_RESULTS: "${{steps.pregunta-05.outputs.result}}"
+        PREGUNTA-06_RESULTS: "${{steps.pregunta-06.outputs.result}}"
+        PREGUNTA-07_RESULTS: "${{steps.pregunta-07.outputs.result}}"
+        PREGUNTA-08_RESULTS: "${{steps.pregunta-08.outputs.result}}"
+        PREGUNTA-09_RESULTS: "${{steps.pregunta-09.outputs.result}}"
       with:
-        runners: pregunta-01,pregunta-02,pregunta-03
+        runners: pregunta-01,pregunta-02,pregunta-03,pregunta-04,pregunta-05,pregunta-06,pregunta-07,pregunta-08,pregunta-09
